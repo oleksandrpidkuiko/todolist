@@ -6,11 +6,7 @@ import { Task } from './task';
 })
 
 export class DataService {
-
-  private data: Task[] = [
-    { id: '1', name: 'Выучить Angular', date:  new Date(1996), status: false},
-    { id: '2', name: 'Выучить JS', date: new Date(1996), status: false}
-  ];
+  private data: Task[] = [];
 
   getData(): Task[] {
     const data = JSON.parse(localStorage.getItem('tasks'));
@@ -50,11 +46,49 @@ export class DataService {
 
   }
 
+  sortTasks(task, value) {
+    task =  task.sort(function(a, b) {
+      return a[value] - b[value];
+    });
+    return task;
+  }
+
   changeData(taskId) {
+    this.data = JSON.parse(localStorage.getItem('tasks'));
     this.data.forEach( ({id}, index, arr) => {
+
       if (id === taskId) {
         arr[index].status = !arr[index].status;
       }
     });
+    localStorage.setItem('tasks', JSON.stringify(this.data));
+  }
+
+  countDoneTask() {
+    let count = 0;
+
+    this.data = JSON.parse(localStorage.getItem('tasks'));
+
+    this.data.forEach((elem, index, array) => {
+
+      if (elem.status) {
+        count++;
+      }
+    });
+    return count;
+  }
+
+  countInProgress() {
+    let count = 0;
+
+    this.data = JSON.parse(localStorage.getItem('tasks'));
+
+    this.data.forEach((elem, index, array) => {
+
+      if (!elem.status) {
+        count++;
+      }
+    });
+    return count;
   }
 }

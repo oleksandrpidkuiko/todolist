@@ -1,0 +1,16 @@
+<div style="display: flex; flex-direction: row;">
+  <canvas class="result-chart" mdbChart
+          [chartType]="chartType"
+          [datasets]="chartDatasets"
+          [labels]="chartLabels"
+          [colors]="chartColors"
+          [options]="chartOptions"
+          [legend]="true"
+          (chartHover)="chartHovered($event)"
+          (chartClick)="chartClicked($event)">
+  </canvas>
+  <div class="result-info">
+    <p>Number of tasks completed: {{countDoneTask}}</p>
+    <p>Number of tasks to be performed: {{countInProgress}}</p>
+  </div>
+</div>

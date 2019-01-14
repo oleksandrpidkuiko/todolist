@@ -5,17 +5,16 @@ import { Directive, HostBinding, HostListener} from '@angular/core';
 })
 export class ColorStateDirective {
 
-  @HostBinding('style.background-color') myColor: string;
-  @HostListener('change', ['$event']) changeColor(event) {
-   if (this.myColor === 'yellowgreen') {
-     this.myColor = 'greenyellow';
+  @HostBinding('style.text-decoration') textDecoration: string;
+  @HostListener('click') changeTaskFromList() {
+   if (this.textDecoration === 'line-through') {
+     this.textDecoration = 'none';
    } else {
-     this.myColor = 'yellowgreen';
+     this.textDecoration = 'line-through';
    }
   }
 
   constructor() {
-    this.myColor = 'greenyellow';
   }
 
 }

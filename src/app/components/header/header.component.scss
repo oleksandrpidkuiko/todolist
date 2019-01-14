@@ -1,0 +1,13 @@
+.header-nav {
+  background: #3f51b5;
+  padding: 25px 50px;
+}
+
+a.header-link {
+  color: white;
+  margin: 0 25px;
+
+  &:hover {
+    text-decoration: none;
+  }
+}

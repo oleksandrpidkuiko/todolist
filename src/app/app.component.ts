@@ -8,7 +8,7 @@ import { DataService } from './data.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  date: Date;
+  /*date: Date;
   name: string;
   tasks: Task[] = [];
 
@@ -30,9 +30,8 @@ export class AppComponent implements OnInit {
 
   trackByFn(index) {
     return index;
-  }
+  }*/
 
   ngOnInit() {
-    this.tasks = this.dataService.getData();
   }
 }
