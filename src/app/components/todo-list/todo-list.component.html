@@ -8,14 +8,11 @@
       <li *ngFor="let task of tasks">
         <app-task-card
           [task]="task"
-          (taskSelected)="selectedTask = task"
+          (taskState)="changeTaskState($event)"
           (removeTask)="removeTask($event)"
-          (changeTask)="changeState($event)"
+          (changeTask)="changeTaskData($event)"
         ></app-task-card>
       </li>
     </ul>
   </div>
 </div>
-<!--<div>
-  <p>{{ selectedTask?.name }}</p>
-</div>-->

@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
   }
 
   changeState(id: string) {
-    this.dataService.changeData(id);
+    this.dataService.changeState(id);
   }
 
   trackByFn(index) {

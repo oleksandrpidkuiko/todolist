@@ -1,4 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {MatDialog} from '@angular/material';
+import {ModalForChangeComponent} from '../modal-for-change/modal-for-change.component';
 
 @Component({
   selector: 'app-task-card',
@@ -7,11 +9,12 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class TaskCardComponent implements OnInit {
   @Input() task;
-  @Output() taskSelected: EventEmitter<any> = new EventEmitter();
+  @Output() taskState: EventEmitter<any> = new EventEmitter();
   @Output() removeTask: EventEmitter<any> = new EventEmitter();
   @Output() changeTask: EventEmitter<any> = new EventEmitter();
 
-  constructor() { }
+  constructor(public dialog: MatDialog) {
+  }
 
   ngOnInit() {
   }
@@ -20,11 +23,21 @@ export class TaskCardComponent implements OnInit {
     this.removeTask.emit(id);
   }
 
-  changeTaskFromList(id: string) {
-    this.changeTask.emit(id);
+  changeTaskState(id: string) {
+    this.taskState.emit(id);
   }
 
-  selectTask() {
-    this.taskSelected.emit();
+  changeTaskData() {
+    const dialogRef = this.dialog.open(ModalForChangeComponent, {
+      width: '250px',
+      data: this.task
+    });
+
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          this.changeTask.emit(result);
+        console.log(result);
+      }
+    });
   }
 }

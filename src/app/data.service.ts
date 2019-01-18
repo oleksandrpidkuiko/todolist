@@ -53,12 +53,24 @@ export class DataService {
     return task;
   }
 
-  changeData(taskId) {
+  changeState(taskId) {
     this.data = JSON.parse(localStorage.getItem('tasks'));
     this.data.forEach( ({id}, index, arr) => {
 
       if (id === taskId) {
         arr[index].status = !arr[index].status;
+      }
+    });
+    localStorage.setItem('tasks', JSON. stringify(this.data));
+  }
+
+  changeDate(taskOptions) {
+    this.data = JSON.parse(localStorage.getItem('tasks'));
+    this.data.forEach(({id}, index, arr) => {
+
+      if (id === taskOptions.id) {
+        arr[index].date = taskOptions.date;
+        arr[index].name = taskOptions.name;
       }
     });
     localStorage.setItem('tasks', JSON.stringify(this.data));

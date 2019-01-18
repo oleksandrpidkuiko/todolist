@@ -1,0 +1,34 @@
+<div>
+  <div class="modal-header">
+    <div>
+      <h1 class="header-title">You can change task parameters here!</h1>
+    </div>
+    <div>
+      <button mat-mini-fab color="primary" (click)="dialogRef.close()">
+        <mat-icon>
+          <i class="material-icons">
+            close
+          </i>
+        </mat-icon>
+      </button>
+    </div>
+  </div>
+  <div [formGroup]="formForChange">
+    <mat-form-field>
+      <mat-label>Task</mat-label>
+      <input formControlName="name" matInput>
+    </mat-form-field>
+    <mat-form-field color="primary">
+      <mat-label>{{data.date | date:'fullDate'}}</mat-label>
+      <input formControlName="date" matInput [matDatepicker]="picker">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker color="primary"></mat-datepicker>
+    </mat-form-field>
+    <button mat-button color="primary" (click)="dialogRef.close()">
+      Cancel
+    </button>
+    <button mat-button color="primary" (click)="changeData()">
+       Save
+    </button>
+  </div>
+</div>

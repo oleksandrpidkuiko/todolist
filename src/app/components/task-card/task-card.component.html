@@ -1,14 +1,19 @@
-<div (click)="selectTask()" class="task-card-block">
+<div class="task-card-block">
   <mat-checkbox class="status-checkbox-position"
                 [checked]="task.status"
                 color="primary"
-                (change)="changeTaskFromList(task.id)">
+                (change)="changeTaskState(task.id)">
   </mat-checkbox>
   <p [ngClass]="{'complete': task.status}" class="task-card-info d-flex">
     <span class="mr-3">{{task.name}}</span>
     <span class="mr-3">{{task.status | taskState}}</span>
     <span class="mr-3">{{task.date | date:'fullDate'}}</span>
   </p>
+  <button mat-fab color="primary" (click)="changeTaskData()">
+    <mat-icon><i class="material-icons">
+      build
+    </i></mat-icon>
+  </button>
   <button mat-fab color="primary" (click)="removeTaskFromList(task.id)">
     <mat-icon><i class="material-icons">
       delete
