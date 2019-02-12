@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Task} from '../../task';
-import {DataService} from '../../data.service';
+import {DataService} from '../../services/data.service';
 import {MatDialog, MatSnackBar} from '@angular/material';
 import {ModalForChangeComponent} from '../modal-for-change/modal-for-change.component';
 
@@ -12,7 +12,7 @@ import {ModalForChangeComponent} from '../modal-for-change/modal-for-change.comp
 export class TodoListComponent implements OnInit {
 
   sortBy = 'status';
-  tasks: Task[] = [];
+  tasks: Task[];
 
   constructor(private dataService: DataService,
               private snackBar: MatSnackBar) {

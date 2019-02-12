@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { Task } from './task';
+import {Injectable} from '@angular/core';
+import {Task} from '../task';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ export class DataService {
 
   getData(): Task[] {
     const data = JSON.parse(localStorage.getItem('tasks'));
-    console.log(data);
+
     return data;
   }
 
@@ -34,11 +34,9 @@ export class DataService {
     };
 
     if (localStorage.getItem('tasks')) {
-      console.log(localStorage.getItem('tasks'));
       this.data = JSON.parse(localStorage.getItem('tasks'));
       this.data.push(TASK);
       localStorage.setItem('tasks', JSON.stringify(this.data));
-
     } else {
       this.data.push(TASK);
       localStorage.setItem('tasks', JSON.stringify(this.data));
@@ -47,21 +45,23 @@ export class DataService {
   }
 
   sortTasks(task, value) {
-    task =  task.sort(function(a, b) {
-      return a[value] - b[value];
-    });
-    return task;
+    if (task) {
+      task = task.sort(function (a, b) {
+        return a[value] - b[value];
+      });
+      return task;
+    }
   }
 
   changeState(taskId) {
     this.data = JSON.parse(localStorage.getItem('tasks'));
-    this.data.forEach( ({id}, index, arr) => {
+    this.data.forEach(({id}, index, arr) => {
 
       if (id === taskId) {
         arr[index].status = !arr[index].status;
       }
     });
-    localStorage.setItem('tasks', JSON. stringify(this.data));
+    localStorage.setItem('tasks', JSON.stringify(this.data));
   }
 
   changeDate(taskOptions) {

@@ -36,7 +36,6 @@ export class TaskCardComponent implements OnInit {
       dialogRef.afterClosed().subscribe(result => {
         if (result) {
           this.changeTask.emit(result);
-        console.log(result);
       }
     });
   }

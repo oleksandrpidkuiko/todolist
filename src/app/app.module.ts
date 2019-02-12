@@ -2,9 +2,9 @@ import {BrowserModule} from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DataService } from './data.service';
+import { DataService } from './services/data.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { TaskStatePipe } from './task-state.pipe';
+import { TaskStatePipe } from './pipes/task-state.pipe';
 import { ColorStateDirective } from './color-state.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
